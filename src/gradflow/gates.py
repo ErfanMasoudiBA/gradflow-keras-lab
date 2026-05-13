@@ -103,3 +103,19 @@ def copy_backward(*branch_grads):
     Gradients from all branches are summed.
     """
     return sum(branch_grads)
+
+def square_forward(x):
+    """Forward pass for z = x^2."""
+    return x ** 2
+
+
+def square_backward(x, upstream_grad):
+    """
+    Backward pass for z = x^2.
+
+    dz/dx = 2x
+
+    Therefore:
+    dL/dx = upstream_grad * 2x
+    """
+    return upstream_grad * 2 * x
